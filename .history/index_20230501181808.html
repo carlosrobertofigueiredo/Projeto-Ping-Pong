@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Carlos Figueiredo"/>
     <title>Jogo Ping-Pong</title>
     <style>
       * {
@@ -75,10 +74,10 @@
         y: 0,
         w: line.w,
         h: 200,
-        speed: 5,
+        speed: 5;
         _move: function () {
-          if (this.y + this.h / 130 < ball.y + ball.r) {  //130 = velocidade da raquete do computador
-            this.y += this.speed 
+          if (this.y + this.h / 2 < ball.y + ball.r) {
+            this.y += this.speed
           } else {
             this.y -= this.speed
           }
@@ -107,7 +106,6 @@
         increaseComputer: function () {
           this.computer++
         },
-
         draw: function(){
 
           // desenha o placar
@@ -124,8 +122,8 @@
 
       const ball = {
 
-        x: field.w / 2,
-        y: field.h / 2,
+        x: 0,
+        y: 0,
         r:  20,
         speed: 5,
         directionX: 1, //diz a trajetória da bolinha, 1 = bolinha indo pra frente e -1 bolinha pra trás.

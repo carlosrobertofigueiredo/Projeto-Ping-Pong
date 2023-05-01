@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Carlos Figueiredo"/>
     <title>Jogo Ping-Pong</title>
     <style>
       * {
@@ -77,8 +76,8 @@
         h: 200,
         speed: 5,
         _move: function () {
-          if (this.y + this.h / 130 < ball.y + ball.r) {  //130 = velocidade da raquete do computador
-            this.y += this.speed 
+          if (this.y + this.h / 4 < ball.y + ball.r) {
+            this.y += this.speed
           } else {
             this.y -= this.speed
           }
@@ -115,8 +114,8 @@
         canvasCtx.textAlign = "center"
         canvasCtx.textBaseline = "top"
         canvasCtx.fillStyle = "#01341D"
-        canvasCtx.fillText(this.human, field.w / 4, 50) //primeiro parâmetro é o texto do placar = 3, o segundo parâmento é o primeiro 1/4 do campo = window.innerWidth / 4, o terceiro parâmetro é o y que corresponde a altura do placar.
-        canvasCtx.fillText(this.computer, field.w / 4 + field.w / 2, 50) 
+        canvasCtx.fillText(this.human, field.w / 2, 50) //primeiro parâmetro é o texto do placar = 3, o segundo parâmento é o primeiro 1/4 do campo = window.innerWidth / 4, o terceiro parâmetro é o y que corresponde a altura do placar.
+        canvasCtx.fillText(this.computer, field.w / 8 + field.w / 2, 50) 
 
         },
 

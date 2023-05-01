@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Carlos Figueiredo"/>
     <title>Jogo Ping-Pong</title>
     <style>
       * {
@@ -77,8 +76,8 @@
         h: 200,
         speed: 5,
         _move: function () {
-          if (this.y + this.h / 130 < ball.y + ball.r) {  //130 = velocidade da raquete do computador
-            this.y += this.speed 
+          if (this.y + this.h / 60 < ball.y + ball.r) {
+            this.y += this.speed
           } else {
             this.y -= this.speed
           }

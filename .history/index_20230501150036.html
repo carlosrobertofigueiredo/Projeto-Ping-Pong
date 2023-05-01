@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo Ping-Pong</title>
+    <style>
+      * {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas></canvas>
+    <script>
+      //Captura o elemento canvas do DOM
+      const canvasEl = document.querySelector("canvas"),
+        canvasCtx = canvasEl.getContext("2d"),
+        gapX = 10 //gapX = afastamento da raquete em relação a borda
+
+        const lineWidth = 15
+
+      const field = {
+        w: window.innerWidth,
+        h: window.innerHeight,
+        draw: function () {
+          canvasCtx.fillStyle = "#286047" //fillStyle define o estilo do objeto
+          canvasCtx.fillRect(0, 0, this.w, this.h) //fillRect define as medidas do retângulo, this - faz referência ao objeto interno
+        },
+      }
+
+      const line = {
+        w: 15,
+        h: field.h,
+        draw: function(){
+          canvasCtx.fillStyle = "#ffffff"
+
+         // desenha linha central
+         canvasCtx.fillRect(field.w / 2 - this.w / 2, 0, this.w, this.h) // field faz referência ao objeto da cons field e o this aos parâmetros internos do próprio objeto
+
+
+        }
+      }
+
+      const leftPaddle = {
+        x: gapX,
+        y: 100,
+        w: line.w,
+        h: 200,
+        draw: function(){
+          canvasCtx.fillStyle = "#ffffff"
+          // desenha a raquete esquerda
+        canvasCtx.fillRect(this.x, this.y, this.w, this.h)  //  this.x = afastamento da raquete da borda), this.y = altura da raquete em relação ao topo,  this.w = largura da linha, this.h = altura da raquete
+        }
+      }
+
+
+      const rightPaddle = {
+        x: filed.w - line.w - gapX,
+        y: 100,
+        w: line.w,
+        h: 200,
+        draw: function(){
+          canvasCtx.fillStyle = "#ffffff"
+         // desenha a raquete direita
+        ccanvasCtx.fillRect(this.x, this.y, this.w, this.h)  //  this.x = afastamento da raquete da borda), this.y = altura da raquete em relação ao topo,  this.w = largura da linha, this.h = altura da raquete
+        }
+      }
+
+      const ball = {
+
+        x: 300,
+        y: 200,
+        r:  20,
+        draw: function() {
+
+          // desenha a bolinha
+        canvasCtx.fillStyle = "#ffffff"
+        canvasCtx.beginPath()  //o comando arc não tem um comando fillarc, por isso é necessário colocar o arc entre o beginPath() e o fill()
+        canvasCtx.arc(500, 300, 20, 0, 2 * Math.PI, false)  //arc(x, y, r, 0, 0.0 * Math.PI, false) x,y = posição do arco(bolinha), r = tamanho da bolinha, 0 = inicio do arco, 2.0 * PI define o circulo 
+        canvasCtx.fill()
+
+        }
+
+
+        
+
+      }
+
+
+       /*Função p/ definir altura e largura do campo*/
+       function setup() {
+        canvasEl.width = canvasCtx.width = field.w
+        canvasEl.height = canvasCtx.height = field.h
+      }
+      
+      /* Função de desenho dos elementos do campo*/
+      function draw() {
+        field.draw()
+        line.draw()
+        leftPaddle.draw()
+        rightPaddle.draw()
+        
+
+      
+       /* const x = window.innerHeight / 2 - lineWidth / 2 //largura do campo dividido por dois e a largura divida por dois, caso queira mudar a espessura da linha no futuro fica mais fácil para centralizar a linha
+        const y = 0 // onde começa a linha
+        const w = lineWidth  //largura é a própria linha
+        const h = window.innerHeight
+
+        canvasCtx.fillRect(x,y,w,h) */
+
+        
+
+        
+        
+
+        // desenha o placar
+        canvasCtx.font = "bold 72px Arial"
+        canvasCtx.textAlign = "center"
+        canvasCtx.textBaseline = "top"
+        canvasCtx.fillStyle = "#01341D"
+        canvasCtx.fillText("3", window.innerWidth / 4, 50) //primeiro parâmetro é o texto do placar = 3, o segundo parâmento é o primeiro 1/4 do campo = window.innerWidth / 4, o terceiro parâmetro é o y que corresponde a altura do placar.
+        canvasCtx.fillText("1", window.innerWidth / 4 + window.innerWidth / 2, 50) 
+      }
+
+      setup()
+      draw()
+    </script>
+  </body>
+</html>
